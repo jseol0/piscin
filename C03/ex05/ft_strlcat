@@ -1,0 +1,45 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_strlcat                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/02/27 12:56:47 by jseol             #+#    #+#              #
+#    Updated: 2021/02/27 16:42:19 by jseol            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+unsigned int ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int 		i;
+	unsigned int	dest_size;
+
+	i = 0;
+	dest_size = ft_strlen(dest);
+	while (*dest != '\0')
+		dest++;
+	while (*src != '\0' && i + dest_size + 1 < size)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		i++;
+	}
+	if (size != 0 && dest_size <= size)
+		*dset = '\0';
+	if (dest_size > size)
+		return (ft_strlen(src) + size);
+	else
+		return (ft_strlen(src) + dest_size);
+}
