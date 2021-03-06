@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 14:23:49 by jseol             #+#    #+#             */
-/*   Updated: 2021/02/27 19:00:59 by jseol            ###   ########.fr       */
+/*   Updated: 2021/02/28 18:49:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,11 @@ int ft_atoi(char *str)
 		i++;
 	}
 	return (ret);
+}
+
+int main(int argc, char **argv)
+{
+        int i = 1;
+
+ 	printf("%d", ft_atoi(argv[i]));
 }

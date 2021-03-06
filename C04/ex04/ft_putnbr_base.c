@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 20:20:48 by jseol             #+#    #+#             */
-/*   Updated: 2021/02/28 16:26:21 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/01 12:37:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		ft_putnbr_base(int nbr, char *base)
 		}
 		if (nbr == 0)
 		{
-			nbr_str[0] = 0;
+			nbr_str[i] = 0;
 			i++;
 		}
 		while (nbr != 0)
@@ -88,4 +88,11 @@ void		ft_putnbr_base(int nbr, char *base)
 		}
 		ft_dectobase(i, nbr_str, base);
 	}
+}
+
+int main()
+{
+int nbr = 1234;
+char base[100] = "0123456789abcdef";
+ft_putnbr_base(nbr, base);
 }
