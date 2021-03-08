@@ -5,11 +5,11 @@ int *ft_range(int min, int max)
 {
 	int i;
 	int *ret;
-	int size;
+	unsigned int size;
 	
 	if (min >= max)
 		return (NULL);
-	size = max - min + 1;
+	size = max - min;
 	ret = (int *)malloc(sizeof(int) * size);
 	if (ret == NULL)
 		return (NULL);
@@ -24,7 +24,9 @@ int *ft_range(int min, int max)
 
 int	main()
 {
-	int *arr = ft_range(-1, 4);
-	for (int i = 0; i < 6; i++)
+	int min = 0;
+	int max = 2100000000;
+	int *arr = ft_range(min, max);
+	for (int i = 0; i < max - min; i++)
 		printf("%d ", arr[i]);
 }

@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 13:39:35 by jseol             #+#    #+#             */
-/*   Updated: 2021/02/27 14:06:17 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/08 12:16:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	while (*str != '\0')
 	{

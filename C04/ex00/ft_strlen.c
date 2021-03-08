@@ -6,11 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 13:37:48 by jseol             #+#    #+#             */
-/*   Updated: 2021/02/27 22:01:10 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/08 12:16:13 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int i;
 

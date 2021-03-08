@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 13:04:50 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/08 13:08:01 by jseol            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 char g_col[11];
@@ -9,7 +21,7 @@ int	check(int i)
 	int y;
 
 	k = 0;
-	while(k < i)
+	while (k < i)
 	{
 		x = g_col[i] - g_col[k];
 		y = i - k;
@@ -56,10 +68,4 @@ int	ft_ten_queens_puzzle(void)
 
 	cnt = queens(0);
 	return (cnt);
-}
-
-int main()
-{
-	printf("%d\n",ft_ten_queens_puzzle());
-	return (0);
 }

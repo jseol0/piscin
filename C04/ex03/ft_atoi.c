@@ -6,13 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 14:23:49 by jseol             #+#    #+#             */
-/*   Updated: 2021/02/28 18:49:28 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/08 12:18:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_isspace(char str)
+int	ft_isspace(char str)
 {
 	if (str == ' ' || str == '\f' || str == '\n' || str == '\r'
 			|| str == '\t' || str == '\v')
@@ -21,9 +19,9 @@ int ft_isspace(char str)
 		return (0);
 }
 
-int ft_issign(char str)
+int	ft_issign(char str)
 {
-	if (str == '-' )
+	if (str == '-')
 		return (-1);
 	else if (str == '+')
 		return (1);
@@ -31,7 +29,7 @@ int ft_issign(char str)
 		return (0);
 }
 
-int ft_isdigit(char str)
+int	ft_isdigit(char str)
 {
 	if (str >= '0' && str <= '9')
 	{
@@ -41,7 +39,7 @@ int ft_isdigit(char str)
 		return (0);
 }
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int i;
 	int sign;
@@ -64,11 +62,4 @@ int ft_atoi(char *str)
 		i++;
 	}
 	return (ret);
-}
-
-int main(int argc, char **argv)
-{
-        int i = 1;
-
- 	printf("%d", ft_atoi(argv[i]));
 }
