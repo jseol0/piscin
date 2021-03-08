@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 11:02:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/07 23:03:23 by jseol            ###   ########.fr       */
+/*   Created: 2021/03/07 11:13:07 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/07 23:10:22 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+unsigned int	ft_strlen(char *str)
 {
 	int i;
-	int j;
 
 	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
 	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	unsigned int	dest_size;
+
+	i = 0;
+	dest_size = ft_strlen(dest);
+	while (*dest != '\0')
+		dest++;
+	while (*src != '\0' && i + dest_size + 1 < size)
 	{
-		j = 0;
-		while (str[i + j] != '\0' && str[i + j] == to_find[j])
-		{
-			if (to_find[j + 1] == '\0')
-				return (&str[i]);
-			j++;
-		}
+		*dest = *src;
+		dest++;
+		src++;
 		i++;
 	}
-	return (0);
+	*dest = '\0';
+	if (dest_size > size)
+		return (ft_strlen(src) + size);
+	else
+		return (ft_strlen(src) + dest_size);
 }

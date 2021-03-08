@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 11:02:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/07 23:03:23 by jseol            ###   ########.fr       */
+/*   Created: 2021/03/07 10:43:57 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/07 21:51:46 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int i;
-	int j;
+	char *tmp;
 
-	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i] != '\0')
+	tmp = dest;
+	while (*tmp != '\0')
+		tmp++;
+	while (*src != '\0' && nb != 0)
 	{
-		j = 0;
-		while (str[i + j] != '\0' && str[i + j] == to_find[j])
-		{
-			if (to_find[j + 1] == '\0')
-				return (&str[i]);
-			j++;
-		}
-		i++;
+		*tmp++ = *src++;
+		nb--;
 	}
-	return (0);
+	*tmp = '\0';
+	return (dest);
 }

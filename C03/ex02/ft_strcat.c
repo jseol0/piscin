@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 11:02:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/07 23:03:23 by jseol            ###   ########.fr       */
+/*   Created: 2021/03/07 10:42:23 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/07 21:31:46 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+char	*ft_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
+	char *tmp;
 
-	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i] != '\0')
-	{
-		j = 0;
-		while (str[i + j] != '\0' && str[i + j] == to_find[j])
-		{
-			if (to_find[j + 1] == '\0')
-				return (&str[i]);
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	tmp = dest;
+	while (*tmp != '\0')
+		tmp++;
+	while (*src != '\0')
+		*tmp++ = *src++;
+	*tmp = '\0';
+	return (dest);
 }
