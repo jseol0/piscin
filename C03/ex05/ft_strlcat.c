@@ -6,7 +6,7 @@
 /*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 11:13:07 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/07 23:10:22 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/10 16:33:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,22 @@ unsigned int	ft_strlen(char *str)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int				i;
+	int		i;
+	int		j;
 	unsigned int	dest_size;
 
 	i = 0;
 	dest_size = ft_strlen(dest);
-	while (*dest != '\0')
-		dest++;
-	while (*src != '\0' && i + dest_size + 1 < size)
-	{
-		*dest = *src;
-		dest++;
-		src++;
+	while (dest[i] != '\0')
 		i++;
+	j = 0;
+	while (src[j] != '\0' && i + dest_size + 1 < size)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	*dest = '\0';
+	dest[i] = '\0';
 	if (dest_size > size)
 		return (ft_strlen(src) + size);
 	else

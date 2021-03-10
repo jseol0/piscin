@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 20:20:48 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/08 12:32:39 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/10 16:54:55 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int		ft_base_check(char *base)
 	return (1);
 }
 
-void		ft_dectobase(int i, int *nbr_str, char *base)
+void		ft_dectobase(int i, int *nbr_index, char *base)
 {
 	while (--i >= 0)
 	{
-		if (nbr_str[i] < 0)
-			nbr_str[i] = -nbr_str[i];
-		write(1, &base[nbr_str[i]], 1);
+		if (nbr_index[i] < 0)
+			nbr_index[i] = -nbr_index[i];
+		write(1, &base[nbr_index[i]], 1);
 	}
 }
 
@@ -65,7 +65,7 @@ void		ft_putnbr_base(int nbr, char *base)
 {
 	int	i;
 	int	base_size;
-	int	nbr_str[42];
+	int	nbr_index[42];
 
 	i = 0;
 	base_size = ft_strlen(base);
@@ -77,15 +77,15 @@ void		ft_putnbr_base(int nbr, char *base)
 		}
 		if (nbr == 0)
 		{
-			nbr_str[i] = 0;
+			nbr_index[i] = 0;
 			i++;
 		}
 		while (nbr != 0)
 		{
-			nbr_str[i] = nbr % base_size;
+			nbr_index[i] = nbr % base_size;
 			nbr /= base_size;
 			i++;
 		}
-		ft_dectobase(i, nbr_str, base);
+		ft_dectobase(i, nbr_index, base);
 	}
 }

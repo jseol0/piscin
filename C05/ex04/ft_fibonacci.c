@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:17:31 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/08 13:17:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/10 16:58:31 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ int	ft_fibonacci(int index)
 		return (0);
 	if (index == 1)
 		return (1);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
