@@ -6,13 +6,13 @@
 /*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 11:13:07 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/10 16:33:40 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/10 17:32:44 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
+unsigned int		ft_strlen(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -20,7 +20,7 @@ unsigned int	ft_strlen(char *str)
 	return (i);
 }
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int		ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	int		i;
 	int		j;
