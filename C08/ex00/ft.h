@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 22:21:10 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/05 22:52:12 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/10 19:19:13 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 void	ft_putchar(char c);
 void	ft_swap(int *a, int *b);
 void	ft_putstr(char *str);
-int	ft_strlen(char *str);
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
 #endif

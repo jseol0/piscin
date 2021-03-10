@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/07 10:43:57 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/10 21:50:24 by jseol            ###   ########.fr       */
+/*   Created: 2021/03/10 19:12:42 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/10 19:14:57 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	char *tmp;
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-	tmp = dest;
-	while (*tmp != '\0')
-		tmp++;
-	while (*src != '\0' && nb != 0)
-	{
-		*tmp++ = *src++;
-		nb--;
-	}
-	*tmp = '\0';
-	return (dest);
-}
+typedef struct	s_point
+{
+	int	x;
+	int	y;
+}				t_point;
+
+#endif
