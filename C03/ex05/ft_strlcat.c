@@ -6,7 +6,7 @@
 /*   By: jseol <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 11:13:07 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/10 21:55:52 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/11 00:49:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned int		ft_strlcat(char *dest, char *src, unsigned int size)
 		i++;
 		j++;
 	}
-	if (i < size)
+	if (size != 0 && dest_size <= size)
 		dest[i] = '\0';
 	if (dest_size > size)
 		return (ft_strlen(src) + size);
