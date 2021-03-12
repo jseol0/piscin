@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:24:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/10 17:16:17 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/12 21:32:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@ int	ft_sqrt(int nb)
 	int i;
 
 	i = 1;
-	if (nb == 0)
+	if (nb <= 0)
 		return (0);
-	while (i < 46340 || i * i  < nb)
+	while (i <= 46340)
 	{
 		if (nb == i * i)
 			return (i);
-		i++;
+		++i;
 	}
 	return (0);
 }
