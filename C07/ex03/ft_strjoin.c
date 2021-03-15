@@ -12,14 +12,12 @@ int	ft_strlen(char *str)
 char	*ft_strcat(char *dest, char *src)
 {
 	char *ret;
-
+	
 	ret = dest;
-	while(*dest != '\0')
-		dest++;
 	while(*src != '\0')
 		*dest++ = *src++;
-       *dest = '\0';
-       return (ret);
+	*dest = '\0';
+	return (ret);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -46,13 +44,4 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		ft_strcat(ret, strs[i++]);
 	}
 	return (ret);
-}
-#include <stdio.h>
-
-int  main()
-{
-	char **strs = {"Hello", "World!", "Nice", "to"};
-	char **arr = ft_strjoin(4, strs, ", ");
-	for (int i = 0; i < 7; i++)
-	printf("%s", ret[i]);
 }
