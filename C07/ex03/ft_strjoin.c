@@ -47,3 +47,12 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	}
 	return (ret);
 }
+#include <stdio.h>
+
+int  main()
+{
+	char **strs = {"Hello", "World!", "Nice", "to"};
+	char **arr = ft_strjoin(4, strs, ", ");
+	for (int i = 0; i < 7; i++)
+	printf("%s", ret[i]);
+}

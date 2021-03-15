@@ -1,7 +1,18 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/15 15:48:53 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/15 15:49:22 by jseol            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_ultimate_range(int **range, int min, int max)
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	int i;
 	int size;
@@ -21,12 +32,4 @@ int ft_ultimate_range(int **range, int min, int max)
 		i++;
 	}
 	return (size);
-}
-
-int main()
-{
-	int a = 1;
-	int b = 4;
-	int *range;
-	printf("%d", ft_ultimate_range(&range, a, b));
 }

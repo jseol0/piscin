@@ -5,126 +5,103 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 21:50:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/08 23:43:31 by jseol            ###   ########.fr       */
+/*   Created: 2021/03/14 21:51:25 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/15 15:41:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-int		ft_strlen(char *str);
-char		*ft_strrev(char *str);
-int		ft_is_in_base(char c, char *base);
-int		ft_get_int_from_base(char c, char *base);
-int		skip_whitespace_minus(char *str, int *ptr_i);
+int	find_index(char c, char *base, int base_size);
+int	ft_char_check(char str);
+int	ft_base_check(char *base, int base_size);
+int	ft_strlen(char *str);
 
-int		ft_check_base(char *base)
+char		*foo(char *buf)
 {
 	int	i;
-	int	j;
+	char	*ret;
 
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(buf) + 1));
+	if (ret == NULL)
+		return (NULL);
 	i = 0;
-	if (ft_strlen(base) < 2)
-		return (0);
-	i = 0;
-	while (base[i])
+	while (buf[i] != '\0')
 	{
-		if (base[i] == '-' || base[i] == '+' || base[i] == '\f' ||
-				base[i] == '\t' || base[i] == ' ' || base[i] == '\n' ||
-				base[i] == '\r' || base[i] == '\v' || base[i] < 32 ||
-				base[i] == 127)
-			return (0);
-		j = i + 1;
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
+		ret[i] = buf[ft_strlen(buf) - i - 1];
 		i++;
 	}
-	return (1);
+	ret[i] = '\0';
+	return (ret);
 }
 
-int		ft_malloc(char **nbr_c, int *sign, long *nbr_l, int *nbr)
+char		*ft_itoa(int nbr, char *base)
 {
-	if (!(*nbr_c = (char *)malloc(sizeof(char) * 42)))
-		return (0);
-	*sign = 1;
-	if (*nbr == 0)
-		(*nbr_c)[0] = '0';
-	if (*nbr < 0)
-	{
-		*nbr_l = *nbr;
-		*nbr_l *= -1;
-		*sign = -1;
-	}
-	else
-		*nbr_l = *nbr;
-	return (1);
-}
-
-char		*ft_getnbr_base(int nbr, char *base)
-{
-	long	nbr_l;
-	char	*nbr_c;
-	int	base_divider;
-	int	i;
-	int	sign;
-
-	if (!(ft_malloc(&nbr_c, &sign, &nbr_l, &nbr)))
-		return (0);
-	base_divider = ft_strlen(base);
-	if (nbr_c[0] == '0')
-		i = 1;
-	else
-		i = 0;
-	while (nbr_l > 0)
-	{
-		nbr_c[i++] = base[nbr_l % base_divider];
-		nbr_l /= base_divider;
-	}
-	if (sign == -1)
-		nbr_c[i++] = '-';
-	nbr_c[i] = '\0';
-	return (ft_strrev(nbr_c));
-}
-
-int		ft_atoi_base(char *str, char *base)
-{
+	char		buf[42];
 	int		i;
 	int		sign;
-	int		ret;
-	int		base_divider;
+	long long	ll_nbr;
 
-	i = 0;
-	while (base[i])
-		i++;
-	base_divider = i;
-	ret = 0;
+	ll_nbr = nbr;
 	sign = 1;
-	if (skip_whitespace_minus(str, &i) % 2)
-		sign = -1;
-	while (str[i] && ft_is_in_base(str[i], base))
+	if (ll_nbr < 0)
 	{
-		ret *= base_divider;
-		ret += ft_get_int_from_base(str[i], base);
+		sign *= -1;
+		ll_nbr *= -1;
+	}
+	i = 0;
+	while (1)
+	{
+		buf[i++] = base[(ll_nbr % ft_strlen(base))];
+		ll_nbr = ll_nbr / ft_strlen(base);
+		if (ll_nbr == 0)
+			break ;
+	}
+	if (sign == -1)
+		buf[i++] = '-';
+	buf[i] = '\0';
+	return (foo(buf));
+}
+
+int		ft_atoi_base(char *str, char *base_from)
+{
+	int	i;
+	int	sign;
+	int	ret;
+
+	sign = 1;
+	ret = 0;
+	i = 0;
+	while (ft_char_check(str[i]))
+	{
+		sign *= ft_char_check(str[i]);
 		i++;
 	}
-	ret *= sign;
+	while (str[i] != '\0')
+	{
+		if (find_index(str[i], base_from, ft_strlen(base_from)) != -1)
+		{
+			ret *= ft_strlen(base_from);
+			ret += find_index(str[i], base_from, ft_strlen(base_from))
+				* sign;
+			i++;
+		}
+		else
+			break ;
+	}
 	return (ret);
 }
 
 char		*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	if (!ft_check_base(base_from) || !ft_check_base(base_to))
-		return (0);
-	return (ft_getnbr_base(ft_atoi_base(nbr, base_from), base_to));
-}
+	int	num;
+	char	*ret;
 
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	printf("%s", (ft_convert_base(argv[1], argv[2], argv[3])));
+	if (ft_base_check(base_from, ft_strlen(base_from))
+			&& ft_base_check(base_to, ft_strlen(base_to)))
+		num = ft_atoi_base(nbr, base_from);
+	else
+		return (NULL);
+	ret = ft_itoa(num, base_to);
+	return (ret);
 }

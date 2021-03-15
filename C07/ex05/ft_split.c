@@ -6,12 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 18:55:54 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/08 19:38:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/03/12 23:46:52 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	is_charset(char c, char *charset)
 {
@@ -94,18 +93,4 @@ char	**ft_split(char *str, char *charset)
 	}
 	ret[cnt] = NULL;
 	return (ret);
-}
-
-int	main(void)
-{
-	int i = 0;
-	char str[50] = "Hel loW or ld!";
-	char charset[2] = " ";
-	char **ret = ft_split(str, charset);
-	while (ret[i])
-	{
-		printf("%s\n", ret[i]);
-		i++;
-	}
-	return (0);
 }

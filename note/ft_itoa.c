@@ -37,12 +37,9 @@ char    *ft_itoa(int nbr)
 	{
 		ret[i] = buf[ft_strlen(buf) - i - 1];
                 i++;
-
 	}
 	ret[i] = '\0';
-
 	return (ret);
-
 }
 int    main(void)
 {

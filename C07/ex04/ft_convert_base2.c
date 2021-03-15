@@ -5,84 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 21:50:38 by jseol             #+#    #+#             */
-/*   Updated: 2021/03/08 23:43:28 by jseol            ###   ########.fr       */
+/*   Created: 2021/03/15 15:25:33 by jseol             #+#    #+#             */
+/*   Updated: 2021/03/15 15:39:52 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int	find_index(char c, char *base, int base_size)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char		*ft_strrev(char *str)
-{
-	int	size;
-	int	i;
-	char	tmp;
-
-	size = ft_strlen(str);
-	i = 0;
-	while (i < size / 2)
+	while (i < base_size)
 	{
-		tmp = str[i];
-		str[i] = str[size - 1 - i];
-		str[size - 1 - i] = tmp;
+		if (c == base[i])
+			return (i);
 		i++;
 	}
-	return (str);
+	return (-1);
 }
 
-int		ft_is_in_base(char c, char *base)
+int	ft_char_check(char str)
 {
-	int	i;
-
-	i = 0;
-	while (base[i] != c && base[i])
-		i++;
-	if (base[i] == '\0')
-		return (0);
-	else
+	if (str == ' ' || str == '\f' || str == '\n' || str == '\r'
+		|| str == '\t' || str == '\v' || str == '+')
 		return (1);
+	else if (str == '-')
+		return (-1);
+	else
+		return (0);
 }
 
-int		ft_get_int_from_base(char c, char *base)
+int	ft_base_check(char *base, int base_size)
 {
 	int	i;
+	int	j;
+	char	*tmp;
 
 	i = 0;
-	while (base[i])
+	tmp = base;
+	if (tmp[0] == '\0' || base_size == 1)
+		return (0);
+	while (tmp[i] != '\0')
 	{
-		if (base[i] == c)
+		if (tmp[i] == '+' || tmp[i] == '-' || tmp[i] == ' ' || tmp[i] == '\f'
+				|| tmp[i] == '\n' || tmp[i] == '\r'
+				|| tmp[i] == '\t' || tmp[i] == '\v')
+			return (0);
+		j = i + 1;
+		while (tmp[j] != '\0')
 		{
-			return (i);
+			if (tmp[i] == tmp[j])
+				return (0);
+			j++;
 		}
 		i++;
 	}
-	return (i);
+	return (1);
 }
 
-int		skip_whitespace_minus(char *str, int *ptr_i)
+int	ft_strlen(char *str)
 {
-	int	minus_count;
-	int	i;
+	int i;
 
 	i = 0;
-	while (str[i] == '\f' || str[i] == '\t' || str[i] == ' ' ||
-			str[i] == '\n' || str[i] == '\r' || str[i] == '\v')
+	while (str[i] != '\0')
 		i++;
-	minus_count = 0;
-	while (str[i] && (str[i] == '+' || str[i] == '-'))
-	{
-		if (str[i] == '-')
-			minus_count++;
-		i++;
-	}
-	*ptr_i = i;
-	return (minus_count);
+	return (i);
 }
